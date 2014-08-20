@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     SerialSimulator<Cell> sim(new CellInitializer(gridDimensions, maxSteps));
 
     // add output components:
-    sim.addWriter(new TracingWriter<Cell>());
+    sim.addWriter(new TracingWriter<Cell>(1, maxSteps));
     sim.addWriter(new PPMWriter<Cell>(&Cell::value, 0.0, 10000.0, "smoother"));
 
     // start the simulation:
