@@ -19,3 +19,5 @@
 *.exe
 *.out
 *.app
+
+building_cmake_projects/build
