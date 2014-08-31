@@ -1,6 +1,31 @@
+LibGeoDecomp will integrate into autotools-based projects by means of
+pkg-config. This assumes that you have LibGeoDecomp installed somewhere:
+
+========================
+Example 1: Local Install
+========================
+
+mkdir test
+cd test
+
+echo "now building and installing LibGeoDecomp"
+hg clone http://bitbucket.org/gentryx/libgeodecomp
+mkdir -p libgeodecomp/build/foo
+mkdir -p install
+cd libgeodecomp/build/foo
+cmake -DCMAKE_INSTALL_PREFIX=../../../install ../../
+make -j4
+make install
+cd ../../../
+rm -rf libgeodecomp
+
+echo "now building example (a downstream consumer code)"
+git clone https://github.com/gentryx/libgeodecomp_website_examples.git
+cd libgeodecomp_website_examples/building_autotools_projects
+
 aclocal
 autoconf
 automake --add-missing
-
-PKG_CONFIG_PATH=$HOME/local_install/lib/pkgconfig/ ./configure
+PKG_CONFIG_PATH=../../install/lib/pkgconfig ./configure
 make
+./main
