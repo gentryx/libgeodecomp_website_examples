@@ -23,4 +23,6 @@
 # Emacs backups
 *~
 
+# Build files
 building_cmake_projects/build
+building_makefile_projects/main
