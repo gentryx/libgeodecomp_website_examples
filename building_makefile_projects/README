@@ -25,4 +25,4 @@ git clone https://github.com/gentryx/libgeodecomp_website_examples.git
 cd libgeodecomp_website_examples/building_makefile_projects
 
 PKG_CONFIG_PATH=../../install/lib/pkgconfig make
-
+./main

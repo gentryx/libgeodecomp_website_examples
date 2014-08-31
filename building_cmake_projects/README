@@ -29,6 +29,7 @@ mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
 cd libgeodecomp_website_examples/building_cmake_projects/build
 cmake -Dlibgeodecomp_DIR=../../libgeodecomp/build/foo ../
 make -j4
+./main
 
 ===========================================
 Example 2: Local Install, CMAKE_PREFIX_PATH
@@ -54,6 +55,7 @@ mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
 cd libgeodecomp_website_examples/building_cmake_projects/build
 cmake -DCMAKE_PREFIX_PATH=`pwd`/../../../install ../
 make -j4
+./main
 
 ==========================================
 Example 3: Local Install, libgeodecomp_DIR
@@ -79,3 +81,4 @@ mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
 cd libgeodecomp_website_examples/building_cmake_projects/build
 cmake -Dlibgeodecomp_DIR=`pwd`/../../../install/lib/cmake/libgeodecomp ../
 make -j4
+./main
