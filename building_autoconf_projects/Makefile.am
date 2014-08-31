@@ -1,0 +1,5 @@
+bin_PROGRAMS = main
+
+main_SOURCES = main.cpp
+main_CXXFLAGS = $(AM_CFLAGS) $(LIBGEODECOMP_CFLAGS)
+main_LDADD = $(LIBGEODECOMP_LIBS)

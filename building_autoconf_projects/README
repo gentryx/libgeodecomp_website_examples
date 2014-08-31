@@ -1,0 +1,6 @@
+aclocal
+autoconf
+automake --add-missing
+
+PKG_CONFIG_PATH=$HOME/local_install/lib/pkgconfig/ ./configure
+make
