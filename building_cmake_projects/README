@@ -1,0 +1,81 @@
+There are multiple ways of including LibGeoDecomp via CMake. They
+basically boil down to either using
+
+a) a live build tree of LibGeoDecomp (e.g. by cloning its trunk) or
+
+b) having LibGeoDecomp installed into some prefix (e.g. /usr or your home directory).
+
+CMake can find LibGeoDecomp eihter by setting libgeodecomp_DIR or by
+setting CMAKE_PREFIX_PATH. Here are some quick examples:
+
+============================================
+Example 1: Live Build Tree, libgeodecomp_DIR
+============================================
+
+mkdir test
+cd test
+
+echo "now building LibGeoDecomp"
+hg clone http://bitbucket.org/gentryx/libgeodecomp
+mkdir -p libgeodecomp/build/foo
+cd libgeodecomp/build/foo
+cmake ../../
+make -j4
+cd ../../../
+
+echo "now building example (a downstream consumer code)"
+git clone https://github.com/gentryx/libgeodecomp_website_examples.git
+mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
+cd libgeodecomp_website_examples/building_cmake_projects/build
+cmake -Dlibgeodecomp_DIR=../../libgeodecomp/build/foo ../
+make -j4
+
+===========================================
+Example 2: Local Install, CMAKE_PREFIX_PATH
+===========================================
+
+mkdir test
+cd test
+
+echo "now building and installing LibGeoDecomp"
+hg clone http://bitbucket.org/gentryx/libgeodecomp
+mkdir -p libgeodecomp/build/foo
+mkdir -p install
+cd libgeodecomp/build/foo
+cmake -DCMAKE_INSTALL_PREFIX=../../../install ../../
+make -j4
+make install
+cd ../../../
+rm -rf libgeodecomp
+
+echo "now building example (a downstream consumer code)"
+git clone https://github.com/gentryx/libgeodecomp_website_examples.git
+mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
+cd libgeodecomp_website_examples/building_cmake_projects/build
+cmake -DCMAKE_PREFIX_PATH=`pwd`/../../../install ../
+make -j4
+
+==========================================
+Example 3: Local Install, libgeodecomp_DIR
+==========================================
+
+mkdir test
+cd test
+
+echo "now building and installing LibGeoDecomp"
+hg clone http://bitbucket.org/gentryx/libgeodecomp
+mkdir -p libgeodecomp/build/foo
+mkdir -p install
+cd libgeodecomp/build/foo
+cmake -DCMAKE_INSTALL_PREFIX=../../../install ../../
+make -j4
+make install
+cd ../../../
+rm -rf libgeodecomp
+
+echo "now building example (a downstream consumer code)"
+git clone https://github.com/gentryx/libgeodecomp_website_examples.git
+mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
+cd libgeodecomp_website_examples/building_cmake_projects/build
+cmake -Dlibgeodecomp_DIR=`pwd`/../../../install/lib/cmake/libgeodecomp ../
+make -j4
