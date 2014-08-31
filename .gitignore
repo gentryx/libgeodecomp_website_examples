@@ -20,4 +20,7 @@
 *.out
 *.app
 
+# Emacs backups
+*~
+
 building_cmake_projects/build
