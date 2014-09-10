@@ -27,7 +27,7 @@ echo "now building example (a downstream consumer code)"
 git clone https://github.com/gentryx/libgeodecomp_website_examples.git
 mkdir -p libgeodecomp_website_examples/building_cmake_projects/build
 cd libgeodecomp_website_examples/building_cmake_projects/build
-cmake -Dlibgeodecomp_DIR=../../libgeodecomp/build/foo ../
+cmake -Dlibgeodecomp_DIR=$(pwd)/../../../libgeodecomp/build/foo ../
 make -j4
 ./main
 
