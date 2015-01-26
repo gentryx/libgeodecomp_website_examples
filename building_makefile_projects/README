@@ -27,23 +27,20 @@ cd libgeodecomp_website_examples/building_makefile_projects
 PKG_CONFIG_PATH=../../install/lib/pkgconfig make
 ./main
 
-========================
-Example 2: Local Install
-========================
+==========================
+Example 2: Live Build Tree
+==========================
 
 mkdir test
 cd test
 
-echo "now building and installing LibGeoDecomp"
+echo "now building LibGeoDecomp"
 hg clone http://bitbucket.org/gentryx/libgeodecomp
 mkdir -p libgeodecomp/build/foo
-mkdir -p install
 cd libgeodecomp/build/foo
-cmake -DCMAKE_INSTALL_PREFIX=../../../install ../../
+cmake  ../../
 make -j4
-make install
 cd ../../../
-rm -rf libgeodecomp
 
 echo "now building example (a downstream consumer code)"
 git clone https://github.com/gentryx/libgeodecomp_website_examples.git
